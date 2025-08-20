@@ -1,66 +1,124 @@
-Prompt 1 : code generation and debugging
+Prompt 1:Code Generation & Debugging
 
-I want to generate a factory monitoring system in Python. Please:
-- Use OOP with classes: `Sensor`, `Machine`, `FactoryMonitor`.
-- Compute machine health with formula: `100 - (temp/2 + pressure/10 + vibration*20)`.
-- Add alerts: 
-  - Health < 50 → "Critical Machine Failure Risk"
-  - Missing sensor → "Sensor Offline Warning"
-- Load input data from a CSV (no hardcoded arrays).
-- Apply debugging best practices:
-  - Clear error messages
-  - Exception handling for malformed input
-  - Efficient loops and clean code style
-- Organize into modular files: `sensor.py`, `machine.py`, `factory_monitor.py`, `main.py`.
-- After creating them also includes the docstrings for all files.
+I want to generate a Factory Monitoring System in Python. Requirements:
 
+OOP Design: Classes → Sensor, Machine, FactoryMonitor.
+Machine health formula:
+100 - (TEMP_WEIGHT * temp + PRESSURE_WEIGHT * pressure + VIBRATION_WEIGHT * vibration)
+where constants TEMP_WEIGHT=0.5, PRESSURE_WEIGHT=0.1, VIBRATION_WEIGHT=20.
 
+Alerts:
+Health < 50 → "Critical Machine Failure Risk"
+Missing sensor → "Sensor Offline Warning"
+Input: Load machine + sensor data from CSV (not hardcoded).
 
+Debugging Best Practices:
+Use try/except with clear error messages
+Validate CSV (raise ValueError if malformed/empty)
+Use logging module (INFO, WARNING, ERROR levels)
+Write efficient loops and PEP8 clean style
 
-Prompt 2 : code review and refactoring
+Project Structure:
+sensor.py
+machine.py
+factory_monitor.py
+main.py
 
-Refactor messy prototype code into a clean design. Requirements:
-- Replace hardcoded arrays with OOP: `Sensor`, `Machine`, `FactoryMonitor`.
-- Encapsulation: private fields (`_id`, `_sensors`) with properties.
-- Remove magic numbers: define constants for weights.
-- Add validation for CSV input and raise exceptions on malformed/empty data.
-- Follow refactoring standards: readability, maintainability, scalability.
-
-
-
-Prompt 3 : for generating unit testing
-
-Write `pytest` unit tests for the factory monitoring project. Cover:
-- Machine with high temp/pressure/vibration → health < 50 → critical alert.
-- Machine with missing sensor → "Sensor Offline Warning".
-- Factory average health calculation across multiple machines.
-- Boundary case: health = 50 → no alert.
-- Empty or malformed CSV → raise `ValueError`.
-- Place tests inside `tests/test_factory.py`.
+Documentation: Add docstrings to all files/classes/functions.
 
 
+Prompt 2:Code Review & Refactoring
+Replace hardcoded arrays with OOP (Sensor, Machine, FactoryMonitor).
+
+Encapsulation: Use private attributes (_id, _sensors) and properties for controlled access.
+
+Constants: Replace magic numbers with named constants (TEMP_WEIGHT, PRESSURE_WEIGHT, VIBRATION_WEIGHT).
+
+Validation:
+Validate CSV input format.
+Raise ValueError on malformed/empty data.
+
+Design Principles:
+Apply SOLID principles
+Apply at least one design pattern (Factory Pattern for sensor creation).
+
+Code Quality:
+Improve readability & maintainability.
+Remove redundancy with helper methods.
+Apply type hints (-> int, -> float, etc.).
+Ensure PEP8 compliance and scalability for future sensors/machines.
 
 
-Prompt 4 : For create an documnetation
 
-Generate a professional `README.md` for the factory monitoring system. Include:
-- 📌 Introduction: What the project does (OOP-based Factory Health Monitoring).
-- ⚙️ Classes: Explain `Sensor`, `Machine`, `FactoryMonitor`.
-- ▶️ Usage:
-  - Run project: `python main.py`
-  - Run tests: `pytest -v`
-- 📂 Example: Show sample CSV input and expected output.
-- 🔄 Concurrency: Mention sequential vs threaded simulation.
-- Keywords: encapsulation, modular design, scalability.
+Prompt 3 : Unit Testing
+Write comprehensive pytest tests for the Factory Monitoring System. Requirements:
+
+Critical alert: Machine with high temp/pressure/vibration → health < 50 → "Critical Machine Failure Risk".
+
+Sensor warning: Machine missing a sensor → "Sensor Offline Warning".
+
+Average health: Verify FactoryMonitor computes correct average across multiple machines.
+
+Boundary case: health = 50 → no alert.
+
+CSV validation:
+Empty CSV → raise ValueError.
+Malformed CSV → raise ValueError.
+
+Mocking/Stubs:
+Mock sensors to simulate live sensor updates.
+Test concurrency mode with simulated sensor data.
+
+Place tests inside tests/test_factory.py.
+
+Follow PEP8 & Arrange-Act-Assert structure for readability.
 
 
-# Prompt 5 : For improving the code concurrency
 
-Enhance the factory monitoring project with concurrency. Please:
-- Add sequential simulation: loop through machines and update sensor readings.
-- Add threaded simulation: use `threading.Thread` for parallel updates.
-- Use `threading.Lock` for thread-safe health computation.
-- Compare sequential vs threaded execution.
-- Place concurrency logic in `factory_monitor.py`.
-- In `main.py`, demonstrate both modes with printed outputs.
 
+Prompt 4: Documentation
+
+Generate a professional README.md for the Factory Monitoring System. Must include:
+
+Introduction: Explain OOP-based factory health monitoring (sensors → machine health → factory overview).
+
+Architecture Diagram (ASCII or markdown image).
+
+Classes: Describe Sensor, Machine, FactoryMonitor.
+
+Usage:
+python main.py
+pytest -v
+
+Example CSV Input and Expected Output.
+
+Concurrency: Explain sequential vs threaded simulation.
+
+Documentation Tools: Mention auto-generated API docs using pdoc or sphinx.
+
+Keywords: Encapsulation, modular design, scalability, concurrency.
+
+Future Work: Extend to IoT sensors, dashboards, multiprocessing.
+
+
+Prompt 5: Concurrency
+
+Enhance the Factory Monitoring System with concurrency & performance testing. Requirements:
+
+Sequential Simulation: Iterate through machines, update sensor readings one by one.
+
+Threaded Simulation: Use threading.Thread to update machines concurrently.
+
+Thread Safety: Use threading.Lock around shared state (health calculation).
+
+Multiprocessing Extension: Add option with multiprocessing.Process for CPU-bound tasks.
+
+Performance Comparison:
+Compare sequential, threaded, and multiprocessing execution times.
+Print results in main.py.
+
+FactoryMonitor: Concurrency logic inside factory_monitor.py.
+
+Main Program: Demonstrate both modes with sample runs.
+
+Ensure clean shutdown of threads/processes (no orphaned workers).
