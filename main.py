@@ -11,8 +11,9 @@ from factory_monitor import FactoryMonitor
 
 def load_machines_from_csv(file_path):
     """
-    Load machines and their sensors from a CSV file.
-    Returns a FactoryMonitor instance populated with machines.
+    @brief Load machines and their sensors from a CSV file.
+    @param file_path Path to the CSV file.
+    @return A FactoryMonitor instance populated with machines.
     """
     factory = FactoryMonitor()
     with open(file_path, newline='') as csvfile:
