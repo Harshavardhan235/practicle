@@ -1,12 +1,12 @@
-# 🏭 Factory Monitoring System
+# Factory Monitoring System
 
-## 📌 Introduction
+##  Introduction
 This project is an **OOP-based Factory Health Monitoring System** designed to track and assess the health of industrial machines using sensor data. It demonstrates best practices in encapsulation, modular design, and scalability, making it easy to extend and maintain.
-## ⚙️ Classes
+##  Classes
 - **Sensor**: Represents a physical sensor (e.g., temperature, pressure, vibration) attached to a machine. Encapsulates sensor ID, type, and current reading.
 - **Machine**: Models a factory machine. Aggregates multiple `Sensor` objects, computes machine health using a weighted formula, and provides status alerts for critical conditions or missing sensors.
 - **FactoryMonitor**: Manages a collection of machines, calculates average factory health, and supports both sequential and threaded (concurrent) simulation of sensor updates.
-## ▶️ Usage
+## Usage
 - **Run the project:**
 	```sh
 	python main.py
@@ -15,7 +15,7 @@ This project is an **OOP-based Factory Health Monitoring System** designed to tr
 	```sh
 	pytest -v
 	```
-## 📂 Example
+## Example
 ### Sample CSV Input (`machines.csv`):
 ```
 MachineID,Temperature,Pressure,Vibration
@@ -25,25 +25,25 @@ M3,90,200,0.5
 ```
 ### Expected Output (partial):
 ```
-🔍 Machine Health Report
+Machine Health Report
 Machine M1: Health OK (44.0)
 Machine M2: Critical Machine Failure Risk
 Machine M3: Critical Machine Failure Risk
 
-🏭 Average Factory Health: 15.0
+Average Factory Health: 15.0
 
-⚠️ Alerts:
+Alerts:
  - Machine M2: Critical Machine Failure Risk
  - Machine M3: Critical Machine Failure Risk
 
-🔄 Running Sequential Simulation
+Running Sequential Simulation
 [Seq] M1 health: ...
 ...
-⚡ Running Threaded Simulation
+Running Threaded Simulation
 [Thread] M1 health: ...
 ...
 ```
-## 🔄 Concurrency
+## Concurrency
 The system supports both **sequential** and **threaded** (concurrent) simulation of sensor data updates, demonstrating scalable monitoring for real-world factory environments.
 
 ----
