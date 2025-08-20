@@ -1,0 +1,66 @@
+Prompt 1 : code generation and debugging
+
+I want to generate a factory monitoring system in Python. Please:
+- Use OOP with classes: `Sensor`, `Machine`, `FactoryMonitor`.
+- Compute machine health with formula: `100 - (temp/2 + pressure/10 + vibration*20)`.
+- Add alerts: 
+  - Health < 50 → "Critical Machine Failure Risk"
+  - Missing sensor → "Sensor Offline Warning"
+- Load input data from a CSV (no hardcoded arrays).
+- Apply debugging best practices:
+  - Clear error messages
+  - Exception handling for malformed input
+  - Efficient loops and clean code style
+- Organize into modular files: `sensor.py`, `machine.py`, `factory_monitor.py`, `main.py`.
+- After creating them also includes the docstrings for all files.
+
+
+
+
+Prompt 2 : code review and refactoring
+
+Refactor messy prototype code into a clean design. Requirements:
+- Replace hardcoded arrays with OOP: `Sensor`, `Machine`, `FactoryMonitor`.
+- Encapsulation: private fields (`_id`, `_sensors`) with properties.
+- Remove magic numbers: define constants for weights.
+- Add validation for CSV input and raise exceptions on malformed/empty data.
+- Follow refactoring standards: readability, maintainability, scalability.
+
+
+
+Prompt 3 : for generating unit testing
+
+Write `pytest` unit tests for the factory monitoring project. Cover:
+- Machine with high temp/pressure/vibration → health < 50 → critical alert.
+- Machine with missing sensor → "Sensor Offline Warning".
+- Factory average health calculation across multiple machines.
+- Boundary case: health = 50 → no alert.
+- Empty or malformed CSV → raise `ValueError`.
+- Place tests inside `tests/test_factory.py`.
+
+
+
+
+Prompt 4 : For create an documnetation
+
+Generate a professional `README.md` for the factory monitoring system. Include:
+- 📌 Introduction: What the project does (OOP-based Factory Health Monitoring).
+- ⚙️ Classes: Explain `Sensor`, `Machine`, `FactoryMonitor`.
+- ▶️ Usage:
+  - Run project: `python main.py`
+  - Run tests: `pytest -v`
+- 📂 Example: Show sample CSV input and expected output.
+- 🔄 Concurrency: Mention sequential vs threaded simulation.
+- Keywords: encapsulation, modular design, scalability.
+
+
+# Prompt 5 : For improving the code concurrency
+
+Enhance the factory monitoring project with concurrency. Please:
+- Add sequential simulation: loop through machines and update sensor readings.
+- Add threaded simulation: use `threading.Thread` for parallel updates.
+- Use `threading.Lock` for thread-safe health computation.
+- Compare sequential vs threaded execution.
+- Place concurrency logic in `factory_monitor.py`.
+- In `main.py`, demonstrate both modes with printed outputs.
+

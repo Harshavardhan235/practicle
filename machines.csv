@@ -1,0 +1,4 @@
+MachineID,Temperature,Pressure,Vibration
+M1,95,220,0.7
+M2,120,250,1.5
+M3,100,0,1.2
